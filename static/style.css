@@ -1,0 +1,291 @@
+:root {
+    --primary-color: #00ff88;
+    --background-color: #0a0a0a;
+    --text-color: #ffffff;
+    --secondary-text-color: #b3b3b3;
+    --card-background: #1a1a1a;
+    --font-primary: 'Inter', sans-serif;
+    --font-secondary: 'Courier New', monospace;
+}
+
+:root .light {
+    --primary-color: #ff6600;
+    --background-color: #e2e2e2;
+    --text-color: #000000;
+    --secondary-text-color: #535353;
+    --card-background: #f3f3f3;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+canvas#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+header {
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: top 0.3s ease; /* Добавляем плавный переход */
+}
+
+header.hidden {
+    top: -100px; /* Скрываем header за пределами видимости */
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+nav ul li a.active {
+    color: var(--primary-color); /* Цвет активного пункта */
+    border-bottom: 2px solid var(--primary-color); /* Подчеркивание */
+}
+
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#hero h1 {
+    color: var(--text-color);
+    font-size: 4rem;
+    margin: 0;
+    font-family: var(--font-secondary);
+}
+
+#hero .subtitle {
+    font-size: 1.5rem;
+    color: var(--secondary-text-color);
+    margin: 10px 0 20px;
+}
+
+@media (max-width: 768px) { /* Здесь вы указываете максимальную ширину экрана, при которой будет применяться изменение */
+    #hero h1 {
+        font-size: 2rem; /* Здесь вы устанавливаете размер шрифта для меньших экранов */
+        letter-spacing: -1px;
+    }
+    #hero .subtitle {
+        font-size: 1rem;
+    }
+}
+
+.highlight {
+    color: var(--primary-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-family: var(--font-secondary); /* Моноширинный шрифт */
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--text-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: var(--background-color);
+    border: .1px solid var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+    border-radius: 20%;
+}
+
+.btn:hover {
+    background-color: var(--background-color); /* Слегка светлее фон */
+    box-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color); /* Усиленное свечение */
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color);
+}
+
+.btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+@keyframes btn_blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.btn::after {
+    content: '_';
+    position: absolute;
+    right: -10px;
+    animation: btn_blink 4s infinite;
+}
+
+#projects {
+    padding: 60px 0;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px var(--primary-color);
+}
+
+.project-card img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.project-card h3 {
+    margin: 15px 0 10px;
+}
+
+.project-card p {
+    color: var(--secondary-text-color);
+}
+
+#contact {
+    text-align: center;
+    padding: 60px 0;
+}
+
+footer {
+    background-color: #000000;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer .social-links {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+footer .social-links li a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer .social-links li a:hover {
+    color: var(--primary-color);
+}
+
+
+canvas#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+body {
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes blink {
+    0% { opacity: .8; }
+    50% { opacity: 0; }
+}
+
+.cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background-color: var(--font-primary);
+    color: var(--primary-color);
+    animation: blink 1s infinite;
+}
+
+.scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 1px;
+    background: var(--primary-color);
+    z-index: 1000;
+}
+
+/* Для вебкит-браузеров (Chrome, Safari) */
+::-webkit-scrollbar {
+    display: none;
+    /* width: 0; */
+}
