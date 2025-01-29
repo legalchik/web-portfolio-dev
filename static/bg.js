@@ -112,4 +112,3 @@ window.addEventListener('scroll', () => {
     const progress = (scrollTop / scrollHeight) * 100;
     scrollIndicator.style.width = `${progress}%`;
 });
-
