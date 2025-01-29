@@ -8,17 +8,17 @@ renderer.setClearColor(0x000000, 0); // Прозрачный фон
 
 // Добавим освещение
 const light = new THREE.DirectionalLight(0xffffff, 1);
-light.position.set(5, 5, 5).normalize();
+light.position.set(5, 5, 25).normalize();
 scene.add(light);
 
 // Создаем плавающие 3D-фигуры
 const geometry = new THREE.IcosahedronGeometry(1, 0); // Икосаэдр
 const material = new THREE.MeshPhongMaterial({
-    color: 0x00ff88,
-    shininess: 50,
+    color: window.materialPrimaryColor,
+    // shininess: 50,
     flatShading: true,
-    transparent: true,
-    opacity: 0.9,
+    // transparent: true,
+    opacity: .88,
     wireframe: true,
 });
 
@@ -37,7 +37,7 @@ for (let i = 0; i < 16; i++) {
 
 // Частицы
 const particlesGeometry = new THREE.BufferGeometry();
-const particlesCount = 5000;
+const particlesCount = 4999;
 
 const posArray = new Float32Array(particlesCount * 3);
 for (let i = 0; i < particlesCount * 3; i++) {
@@ -62,17 +62,20 @@ camera.position.z = 14;
 // Анимация
 function animate() {
     requestAnimationFrame(animate);
-
     // Вращение фигур
     shapes.forEach((shape) => {
         shape.rotation.x += 0.005;
         shape.rotation.y += 0.005;
     });
 
-    // Вращение частиц
-    particlesMesh.rotation.x += 0.001;
-    particlesMesh.rotation.y += 0.001;
-
+    if (!window.particlesAnimate) {
+        particlesMesh.material.opacity = .001;
+    } else {
+        particlesMesh.material.opacity = .48;
+        // Вращение частиц
+        particlesMesh.rotation.x += 0.001;
+        particlesMesh.rotation.y += 0.001;
+    }
     renderer.render(scene, camera);
 }
 
@@ -95,12 +98,12 @@ window.addEventListener('scroll', () => {
 
     // Интерполяция цвета
     const t = Math.min(scrollY / maxScroll, 1); // Ограничиваем t в диапазоне [0, 1]
-    const startColor = new THREE.Color(0x00ff88);
-    const endColor = new THREE.Color(0xff941a);
+    const startColor = new THREE.Color(window.materialPrimaryColor);
+    const endColor = new THREE.Color(window.materialSecondaryColor);
 
     shapes.forEach((shape) => {
         shape.material.color.lerpColors(startColor, endColor, t);
-        shape.rotation.x += .00005*scrollY;
+        shape.rotation.x += .00007*scrollY;
     });
 
     const scrollIndicator = document.querySelector('.scroll-indicator');

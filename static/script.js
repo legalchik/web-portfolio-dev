@@ -33,12 +33,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     const textElement = document.getElementById('dynamic-text');
-    const texts = ['[legal]', 'legalchik'];
+    const texts = ['[legal]', 'legalchik', 'nelegal?'];
     let index = 0;
     let isDeleting = false;
     let text = 'ebat';
     let typingSpeed = 120; // Скорость печати
-    let pauseBeforeDelete = 7000; // Пауза перед стиранием
+    let pauseBeforeDelete = 8000; // Пауза перед стиранием
 
     function type() {
         const currentText = texts[index];

@@ -9,10 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="ligh">
+<body class="">
     <canvas id="bg"></canvas> <!-- Three.js canvas для 3D-фона -->
     <div class="scroll-indicator"></div>
-
+    
     <header>
         <nav>
             <ul>
@@ -23,6 +23,13 @@
         </nav>
     </header>
 
+    <div class="theme-switcher">
+        <div class="celestial-body">
+          <div class="sun"></div>
+          <div class="moon"></div>
+        </div>
+    </div>
+    
     <section id="hero">
         <div class="container">
             <h1>Привет, я <span class="highlight"><span id="dynamic-text">[legal]</span><span class="cursor">_</span></span></h1>
@@ -69,7 +76,7 @@
         <div class="container">
             <h2>Связаться со мной</h2>
             <p>Если вы хотите обсудить проект или просто поздороваться, напишите мне:</p>
-            <a href="https://t.me/uiqbinned" class="btn">Telegram</a>
+            <a href="tg://resolve?domain=uiqbinned" class="btn">Telegram</a>
         </div>
     </section>
 
@@ -83,6 +90,7 @@
         </div>
     </footer>
 
+    <script src="static/theme.js"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>

@@ -20,6 +20,11 @@ html {
     scroll-behavior: smooth;
 }
 
+h1, h2, h3, p {
+    color: var(--text-color); 
+    transition: all .3s ease;  
+}
+
 body {
     font-family: var(--font-primary);
     background-color: var(--background-color);
@@ -28,10 +33,12 @@ body {
     padding: 0;
     line-height: 1.6;
     overflow-x: hidden;
+    transition: all 1s ease;
 }
 
 canvas#bg {
     position: fixed;
+    width: 100%;
     top: 0;
     left: 0;
     z-index: -1;
@@ -69,14 +76,14 @@ header nav ul li a {
     color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color .3s ease;
 }
 
 header nav ul li a:hover {
     color: var(--primary-color);
 }
 
-nav ul li a.active {
+header nav ul li a.active {
     color: var(--primary-color); /* Цвет активного пункта */
     border-bottom: 2px solid var(--primary-color); /* Подчеркивание */
 }
@@ -114,6 +121,7 @@ nav ul li a.active {
 
 .highlight {
     color: var(--primary-color);
+    transition: color .3s ease;
 }
 
 .btn {
@@ -189,7 +197,7 @@ nav ul li a.active {
     background-color: var(--card-background);
     padding: 20px;
     border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color .3s ease;
 }
 
 .project-card:hover {
@@ -216,9 +224,10 @@ nav ul li a.active {
 }
 
 footer {
-    background-color: #000000;
+    background-color: var(--card-background);
     padding: 20px 0;
     text-align: center;
+    transition: background-color .3s ease;
 }
 
 footer .social-links {
@@ -288,4 +297,54 @@ body {
 ::-webkit-scrollbar {
     display: none;
     /* width: 0; */
+}
+
+/* Theme switch*/
+.theme-switcher {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 60px;
+    z-index: 1001;
+}
+
+.celestial-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.sun, .moon {
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.sun {
+    background-color: #ffcc00;
+    box-shadow: 0 0 20px #ffcc00, 0 0 40px #ffcc00;
+    top: 5px;
+    left: 5px;
+    opacity: 1;
+}
+
+.moon {
+    background-color: #b3b3b3;
+    box-shadow: 0 0 20px #b3b3b3, 0 0 40px #b3b3b3;
+    top: 5px;
+    left: 55px;
+    opacity: 0;
+}
+
+/* Анимация для темной темы */
+body.dark .sun {
+    transform: translateX(-50px);
+    opacity: 0;
+}
+
+body.dark .moon {
+    transform: translateX(-50px);
+    opacity: 1;
 }
