@@ -8,7 +8,7 @@ gsap.from('#about p', {
     opacity: 0,
     y: 50,
     duration: 1,
-    stagger: 1  ,
+    stagger: .2  ,
     scrollTrigger: {
         trigger: '#about',
         start: 'top 90%',
@@ -19,11 +19,11 @@ gsap.from('#about p', {
 gsap.from('.project-card', {
     opacity: 0,
     y: 50,
-    duration: 1,
-    stagger: 0.2,
+    duration: 2,
+    stagger: .2,
     scrollTrigger: {
         trigger: '#projects',
-        start: 'top 50%',
+        start: 'top 65%',
     },
 });
 

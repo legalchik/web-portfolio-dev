@@ -283,6 +283,10 @@ header nav ul li a.active {
     padding: 60px 0;
 }
 
+#contact a {
+    top: 10px;
+}
+
 footer {
     background-color: var(--card-background);
     padding: 20px 0;
@@ -315,14 +319,6 @@ canvas#bg {
     top: 0;
     left: 0;
     z-index: -1;
-}
-
-body {
-    color: #ffffff;
-    margin: 0;
-    padding: 0;
-    font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
 }
 
 .container {
